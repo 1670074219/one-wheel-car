@@ -36,12 +36,9 @@ int core1_main(void)
     IfxCpu_emitEvent(&g_cpuSyncEvent);
     IfxCpu_waitEvent(&g_cpuSyncEvent, 1);
 
-
-
     while(1)
     {
         Camera_Display(); //Í¼Ïñ×ÜÁ÷³Ì
     }
-
 }
 
