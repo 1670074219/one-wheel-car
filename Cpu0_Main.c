@@ -129,7 +129,7 @@ int core0_main(void)
         offset = 0;
     }
     /**************菜单***************/
-    Menu_Switch();
+    Menu_Switch(); //函数内有while循环 用于显示图像
 
     while (1)
     {
