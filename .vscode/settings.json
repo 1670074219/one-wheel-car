@@ -1,0 +1,7 @@
+{
+    "files.associations": {
+        "ano_dt.h": "c",
+        "include.h": "c",
+        "lq_i2c_9ax.h": "c"
+    }
+}
