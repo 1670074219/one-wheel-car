@@ -48,7 +48,6 @@ Libraries/iLLD/TC29B/Tricore/Gtm/Atom/Pwm \
 Libraries/iLLD/TC29B/Tricore/Gtm/Std \
 Libraries/iLLD/TC29B/Tricore/Gtm/Tim/In \
 Libraries/iLLD/TC29B/Tricore/Gtm/Tom/Pwm \
-Libraries/iLLD/TC29B/Tricore/Mtu/Std \
 Libraries/iLLD/TC29B/Tricore/Port/Std \
 Libraries/iLLD/TC29B/Tricore/Qspi/SpiMaster \
 Libraries/iLLD/TC29B/Tricore/Qspi/Std \

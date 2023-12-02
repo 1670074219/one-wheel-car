@@ -23,7 +23,6 @@ RM := rm -rf
 -include Libraries/iLLD/TC29B/Tricore/Qspi/Std/subdir.mk
 -include Libraries/iLLD/TC29B/Tricore/Qspi/SpiMaster/subdir.mk
 -include Libraries/iLLD/TC29B/Tricore/Port/Std/subdir.mk
--include Libraries/iLLD/TC29B/Tricore/Mtu/Std/subdir.mk
 -include Libraries/iLLD/TC29B/Tricore/Gtm/Tom/Pwm/subdir.mk
 -include Libraries/iLLD/TC29B/Tricore/Gtm/Tim/In/subdir.mk
 -include Libraries/iLLD/TC29B/Tricore/Gtm/Std/subdir.mk
@@ -73,37 +72,23 @@ endif
 
 -include ../makefile.defs
 
-OPTIONAL_TOOL_DEPS := \
-$(wildcard ../makefile.defs) \
-$(wildcard ../makefile.init) \
-$(wildcard ../makefile.targets) \
-
-
-BUILD_ARTIFACT_NAME := One_Wheel_Car_LQ
-BUILD_ARTIFACT_EXTENSION := elf
-BUILD_ARTIFACT_PREFIX :=
-BUILD_ARTIFACT := $(BUILD_ARTIFACT_PREFIX)$(BUILD_ARTIFACT_NAME)$(if $(BUILD_ARTIFACT_EXTENSION),.$(BUILD_ARTIFACT_EXTENSION),)
-
 # Add inputs and outputs from these tool invocations to the build variables 
 SECONDARY_SIZE += \
 One_Wheel_Car_LQ.siz \
 
 
 # All Target
-all: main-build
-
-# Main-build Target
-main-build: One_Wheel_Car_LQ.elf secondary-outputs
+all: One_Wheel_Car_LQ.elf secondary-outputs
 
 # Tool invocations
-One_Wheel_Car_LQ.elf: $(OBJS) makefile objects.mk $(OPTIONAL_TOOL_DEPS)
+One_Wheel_Car_LQ.elf: $(OBJS)
 	@echo 'Building target: $@'
 	@echo 'Invoking: TASKING Linker'
-	cctc -lrt -lfp_fpu -lcs_fpu  -Wl-Oc -Wl-OL -Wl-Ot -Wl-Ox -Wl-Oy "D:\desktop\workspace\One_Wheel_Car_LQ\src\APP\LQ_MPU6050_DMP.o" -Wl--map-file="One_Wheel_Car_LQ.map" -Wl-mc -Wl-mf -Wl-mi -Wl-mk -Wl-ml -Wl-mm -Wl-md -Wl-mr -Wl-mu --no-warnings= -Wl--error-limit=42 --exceptions --strict --anachronisms --force-c++ -Ctc29xb   -o"One_Wheel_Car_LQ.elf" -Wl-o"One_Wheel_Car_LQ.hex:IHEX" --lsl-core=vtc  --lsl-file=../Lcf_Tasking_Tricore_Tc.lsl $(OBJS)
+	cctc -lrt -lfp_fpu -lcs_fpu  -Wl-Oc -Wl-OL -Wl-Ot -Wl-Ox -Wl-Oy "D:\desktop\workspace-ads\One_Wheel_Car_LQ\src\APP\LQ_MPU6050_DMP.o" -Wl--map-file="One_Wheel_Car_LQ.map" -Wl-mc -Wl-mf -Wl-mi -Wl-mk -Wl-ml -Wl-mm -Wl-md -Wl-mr -Wl-mu --no-warnings= -Wl--error-limit=42 --strict --anachronisms --force-c++ -Ctc29xb   -o"One_Wheel_Car_LQ.elf" -Wl-o"One_Wheel_Car_LQ.hex:IHEX" --lsl-core=vtc  --lsl-file=../Lcf_Tasking_Tricore_Tc.lsl $(OBJS)
 	@echo 'Finished building target: $@'
 	@echo ' '
 
-One_Wheel_Car_LQ.siz: One_Wheel_Car_LQ.elf makefile objects.mk $(OPTIONAL_TOOL_DEPS)
+One_Wheel_Car_LQ.siz: One_Wheel_Car_LQ.elf
 	@echo 'Invoking: Print Size'
 	elfsize  "One_Wheel_Car_LQ.elf"
 	@echo 'Finished building: $@'
@@ -116,6 +101,6 @@ clean:
 
 secondary-outputs: $(SECONDARY_SIZE)
 
-.PHONY: all clean dependents main-build
+.PHONY: all clean dependents
 
 -include ../makefile.targets
