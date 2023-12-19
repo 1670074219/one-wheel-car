@@ -1,7 +1,3 @@
-################################################################################
-# Automatically-generated file. Do not edit!
-################################################################################
-
 LQ_EEPROM_TEST.o :	../src/APP/LQ_EEPROM_TEST.c
 ../src/APP/LQ_EEPROM_TEST.c :
 LQ_EEPROM_TEST.o :	../src/Driver/LQ_EEPROM.h

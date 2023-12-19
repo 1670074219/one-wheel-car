@@ -230,8 +230,8 @@ void Loop_2ms()//2ms
     X.Gyro.out = PID_Realize(&X.Gyro.pid, gyro[1], X.Angle.out);
     T.Gyro.out = PID_Realize(&T.Gyro.pid, gyro[2], T.Angle.out);
 
-    M_Left_PWM = M.Gyro.out+T.Gyro.out;
-    M_Right_PWM = -M.Gyro.out+T.Gyro.out;
+    M_Left_PWM = M.Gyro.out;//+T.Gyro.out;
+    M_Right_PWM = -M.Gyro.out;//+T.Gyro.out;
 
     M_Left_PWM = fclip(M_Left_PWM, -10000, 10000);                     //PWMÏÞ·ù
     M_Right_PWM = fclip(M_Right_PWM, -10000, 10000);                   //PWMÏÞ·ù

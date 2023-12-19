@@ -38,7 +38,7 @@ int core1_main(void)
 
     while(1)
     {
-        Camera_Display(); //图像总流程
+        //Camera_Display(); //图像总流程
     }
 }
 

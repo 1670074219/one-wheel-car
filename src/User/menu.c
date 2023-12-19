@@ -72,8 +72,7 @@ void Save_Parameter(void)
     f32wBuff[18] = T.Angle.pid.P;
     f32wBuff[19] = T.Angle.pid.I;
     f32wBuff[20] = T.Angle.pid.D;
-    if(speed != 0)
-        f32wBuff[21] = speed;
+    f32wBuff[21] = speed;
     f32wBuff[22] = k_offset;//turn
 
     f32wBuff[23] = image_yuanshi_flag;
@@ -354,16 +353,16 @@ menu_item menu1[] = {
         /************************PID*********************************/
 
         /************************STATE*********************************/
-        /*{03, "STATE", NULL, NULL},
+        {03, "STATE", NULL, NULL},
 
         {30, "Return", NULL, NULL},
         {31, "Angle", State_Reverse, &angle_flag},
         {32, "Gyro", State_Reverse, &gyro_flag},
         {33, "Acc", State_Reverse, &acc_flag},
         {34, "Encoder", State_Reverse, &encoder_flag},
-        {35, "Save", Save_Parameter, NULL},*/
+        {35, "Save", Save_Parameter, NULL},
 
-        {03, "SPEED", NULL, NULL},
+        /*{03, "SPEED", NULL, NULL},
         {30, "level", NULL, &change_level},
         {31, "Return", NULL, NULL},
         {32, "cirque", NULL, &element_speed.Cirque_speed},
@@ -373,7 +372,7 @@ menu_item menu1[] = {
         {36, "zhangai", NULL, &element_speed.ZhangAi_speed},
         {37, "bend", NULL, &element_speed.bend_speed},
         {38, "straight", NULL, &element_speed.straight_speed},
-        {39, "Save", Save_Parameter, NULL},
+        {39, "Save", Save_Parameter, NULL},*/
         /************************STATE*********************************/
 
         /************************ELEMENT*********************************/
@@ -561,7 +560,6 @@ void Clear_all_flag(void) //清楚所有标志位
     LED_Ctrl(LED1, OFF);
 }
 
-extern uint8 Duanlu_stage;
 void State_Display(void) //显示数据函数
 {
     char txt[30];
@@ -644,18 +642,6 @@ void State_Display(void) //显示数据函数
         TFTSPI_P6X8Str(1, 12, txt, u16CYAN, u16BLACK);
     }
 
-    sprintf((char*)txt,"%.1f",x_axis);
-    TFTSPI_P8X8Str(12,0,txt,u16CYAN,u16BLACK);
-    sprintf((char*)txt,"%.1f",y_axis);
-    TFTSPI_P8X8Str(12,1,txt,u16CYAN,u16BLACK);
-    sprintf((char*)txt,"DS:%d",Duanlu_stage);
-    TFTSPI_P8X8Str(12,2,txt,u16CYAN,u16BLACK);
-    sprintf((char*)txt,"%.1f",offset);
-    TFTSPI_P8X8Str(12,3,txt,u16CYAN,u16BLACK);
-    sprintf((char*)txt,"%.1f",angle_integral);
-    TFTSPI_P8X8Str(12,4,txt,u16CYAN,u16BLACK);
-    sprintf((char*)txt,"DF:%d",duanlu_finish_stage);
-    TFTSPI_P8X8Str(12,5,txt,u16CYAN,u16BLACK);
     /*sprintf((char*)txt,"CK:%d",cheku_flag);
     TFTSPI_P8X8Str(12,6,txt,u16CYAN,u16BLACK);
     sprintf((char*)txt,"B:%d",road_type.bend);
@@ -671,8 +657,6 @@ void State_Display(void) //显示数据函数
     TFTSPI_P8X8Str(12,2,txt,u16CYAN,u16BLACK);
     sprintf((char*)txt,"%d",cheku_flag);
     TFTSPI_P8X8Str(12,3,txt,u16CYAN,u16BLACK);*/
-
-
 }
 
 uint8 have_sub_menu(int menu_id) // 查看是否存在子菜单
